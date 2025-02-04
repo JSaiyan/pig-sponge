@@ -21,7 +21,8 @@ public class Sponge {
    * Character.toLowerCase() (e.g. Character.toLowerCase('Q'))
    * .toCharArray() String method (e.g. myString.toCharArray())
    */
-  public static void main(String[] args) {
+  public static void main(String[] args) 
+  {
     // Test cases
     assertEqual(1, spongeCase("spongebob"), "sPoNgEbOb");
     assertEqual(2, spongeCase("Who are YOU calling A Pinhead"), "wHo aRe yOu cAlLiNg a pInHeAd");
@@ -31,11 +32,37 @@ public class Sponge {
     assertEqual(6, spongeCase("e"), "e");
   }
 
-  // Implement your solution here!
-  public static String spongeCase(String sentence) {
-    return null;
-  }
 
+  // Implement your solution here!
+  public static String spongeCase(String sentence) //spongeCase method
+  {                                               //"WHAT is UP my dude" is "what" "is" "up" "my" "dude"
+    String[] words = sentence.split(" "); // string array called words initialize to string sentence with .split. 
+                                                  //using the .split so that each of the words are seperated and its own item and re-indexed. 
+
+    String word = ""; //initializing word as an empty string, Keeps adding characters to word as each letter of each word  is processed.
+
+    for(int i = 0; i< words.length; i++) //outer loop determine which word we look at per array
+    {
+      for(int j = 0; j< words[i].length(); j++) //inner loop determines which character we look at per word
+      {
+        if(j % 2 == 0)  //determine to see if the posistion of j is even or odd 
+        {
+          word += Character.toLowerCase(words[i].charAt(j)); // i 0 is spongeBob and j 0 is s. in Case 1. if even then convert lowercase
+        }
+        else
+        {
+          word += Character.toUpperCase(words[i].charAt(j)); // i 0 is who and j 0 is w in test 2. else convert to uppercase
+        }
+      }
+      word = word + " "; //need a space after processing each word
+      
+    }
+    return word.trim(); //adding spaces will have not wanted spaces like the end of the string. 
+    //so .trim eliminates these extra spaces. 
+  
+  }
+  
+  
 
   // Method to help with testing, you do not need to read this.
   public static void assertEqual(int testNumber, String actual, String expected) {
