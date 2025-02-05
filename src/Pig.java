@@ -1,4 +1,5 @@
-public class Pig {
+public class Pig 
+{
 
     /*
     * Create a method "pigLatin" that takes a string consisting of one or more 
@@ -15,7 +16,8 @@ public class Pig {
     * pigLatin("y")  should return "yay"
     * pigLatin("e")   should return "e"
     */
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         // Test cases
         assertEqual(1, pigLatin("something"), "omethingsay");
         assertEqual(2, pigLatin("awesome"), "awesome");
@@ -25,11 +27,30 @@ public class Pig {
     }
 
     // Implement your solution here!
-    public static String pigLatin(String sentence) {
-        return null;
+    public static String pigLatin(String sentence) 
+    {
+        String[] wordArray = sentence.split(" ");
+
+        String holder = " ";
+
+        for(int i = 0; i < wordArray.length; i++)
+        {
+            String word = wordArray[i]; //string word represents wordArray [i] 
+            if(word.charAt(0) == 'a' || word.charAt(0) == 'e' || word.charAt(0) == 'i' || word.charAt(0) == 'o' || word.charAt(0) == 'u')
+                {
+                    holder += word + " ";
+                    
+                } 
+                    else
+                        {
+                            holder += word.substring(1) + word.charAt(0) + "ay ";
+                        }
+        } 
+        return holder.trim(); 
     }
 
 
+ 
 
 
 
@@ -45,6 +66,6 @@ public class Pig {
         System.out.println("Test " + testNumber + " passed!");
         }
     }
-    }
+}
   
   
